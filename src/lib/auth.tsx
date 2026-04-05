@@ -57,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const register = async (data: { name: string; email: string; password: string; organizationName: string }) => {
+  const register = async (data: { name: string; email: string; password: string; organizationName: string; inviteCode?: string }) => {
     const tokens: AuthTokens = await authApi.register(data);
     localStorage.setItem('triad_tokens', JSON.stringify(tokens));
     const payload = decodeJwtPayload(tokens.accessToken);

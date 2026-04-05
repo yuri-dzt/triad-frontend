@@ -15,7 +15,8 @@ export function RegisterPage() {
     name: '',
     email: '',
     password: '',
-    organizationName: ''
+    organizationName: '',
+    inviteCode: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -151,6 +152,26 @@ export function RegisterPage() {
               {errors.organizationName &&
               <p className="text-xs text-destructive">
                   {errors.organizationName}
+                </p>
+              }
+            </div>
+
+            <div className="space-y-2">
+              <label
+                className="text-sm font-medium text-foreground"
+                htmlFor="inviteCode">
+                Código de Convite
+              </label>
+              <input
+                id="inviteCode"
+                type="text"
+                value={formData.inviteCode}
+                onChange={handleChange}
+                className="w-full px-3 py-2 bg-input border border-border rounded-md text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-shadow"
+                placeholder="Digite o código de convite" />
+              {errors.inviteCode &&
+              <p className="text-xs text-destructive">
+                  {errors.inviteCode}
                 </p>
               }
             </div>
